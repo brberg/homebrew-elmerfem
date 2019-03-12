@@ -41,6 +41,7 @@ class Elmer < Formula
     cmake_args << "-DWITH_MPI:BOOL=FALSE" if build.without? "open-mpi"
     cmake_args << "-DWITH_MPI:BOOL=TRUE" if build.with? "open-mpi"
     cmake_args << "-DWITH_OpenMP:BOOL=TRUE" if build.with? "openmp"
+    cmake_args << "-DCMAKE_Fortran_COMPILER_SUPPORTS_CONTIGUOUS=FALSE"
 
     exten = (OS.mac?) ? "dylib" : "so"
     cmake_args << "-DBLAS_LIBRARIES:STRING=#{Formula["openblas"].opt_lib}/libopenblas.#{exten};-lpthread"
